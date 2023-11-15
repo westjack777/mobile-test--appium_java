@@ -20,7 +20,7 @@ public class DriverFactory {
         options.setCapability("udid", "RFCNC0PAM7L");
         options.setCapability("autoGrantPermissions",true);
         options.setCapability("autoAcceptAlerts", true);
-        options.setCapability("fullReset", true);
+        //options.setCapability("fullReset", true);
         //options.setCapability("appPackage", "com.vodqareactnative");
         //options.setCapability("appActivity", "com.vodqareactnative.MainActivity");
         options.setApp("D:\\Documents\\QA\\mobiletesting\\src\\test\\resources\\apps\\appiumChallenge.apk");
