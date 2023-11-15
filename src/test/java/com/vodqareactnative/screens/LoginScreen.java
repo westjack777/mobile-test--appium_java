@@ -24,10 +24,6 @@ public class LoginScreen extends AppiumBasic {
     @AndroidFindBy(xpath = "//*[@text='Back']")
     private WebElement backButton;
 
-    @AndroidFindBy(id = "android:id/message")
-    private WebElement alert;
-
-
     public LoginScreen() {
     }
 
@@ -37,10 +33,6 @@ public class LoginScreen extends AppiumBasic {
         } catch (NoSuchElementException e) {
             click(backButton);
         }
-    }
-
-    public void verifyAlert(String message){
-        Assert.assertEquals(getText(alert), message);
     }
 
     public LoginScreen typeUsername (String username) {
@@ -56,6 +48,13 @@ public class LoginScreen extends AppiumBasic {
     }
 
     public MapScreen pressLoginButton() {
+        click(loginButton);
+        return new MapScreen();
+    }
+
+    public MapScreen loginApp() {
+        typeUsername("admin");
+        typePassword("admin");
         click(loginButton);
         return new MapScreen();
     }

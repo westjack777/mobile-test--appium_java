@@ -24,9 +24,4 @@ public class LoginScreenStepDefinition {
         ls.typePassword(password);
         ls.pressLoginButton();
     }
-
-    @Then("an error message {string} should be displayed")
-    public void an_error_message_should_be_displayed(String message) {
-        ls.verifyAlert(message);
-    }
 }

@@ -1,8 +1,13 @@
 package com.vodqareactnative;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.InteractsWithApps;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.Alert;
 
 import java.net.MalformedURLException;
@@ -11,6 +16,7 @@ import java.net.URL;
 public class DriverFactory {
     private static AndroidDriver driver;
 
+    @BeforeAll
     public static void setUp() {
 
         UiAutomator2Options options = new UiAutomator2Options();
@@ -20,9 +26,10 @@ public class DriverFactory {
         options.setCapability("udid", "RFCNC0PAM7L");
         options.setCapability("autoGrantPermissions",true);
         options.setCapability("autoAcceptAlerts", true);
-        //options.setCapability("fullReset", true);
-        //options.setCapability("appPackage", "com.vodqareactnative");
-        //options.setCapability("appActivity", "com.vodqareactnative.MainActivity");
+//        options.setCapability("fullReset", true);
+//        options.setCapability("noReset", false);
+//        options.setCapability("appPackage", "com.vodqareactnative");
+//        options.setCapability("appActivity", "com.vodqareactnative.MainActivity");
         options.setApp("D:\\Documents\\QA\\mobiletesting\\src\\test\\resources\\apps\\appiumChallenge.apk");
 
         if (driver == null){
@@ -36,18 +43,16 @@ public class DriverFactory {
         handleAlerts();
     }
 
-    public static AndroidDriver getDriver() {
+    public AndroidDriver getDriver() {
         if(driver == null) {
             setUp();
         }
         return driver;
     }
 
-    public void tearDown(){
-
-        if(driver != null){
-            driver.quit();
-        }
+    @AfterAll
+    public static void tearDown() {
+        driver.quit();
     }
 
     public static void handleAlerts(){
